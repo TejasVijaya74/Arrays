@@ -13,7 +13,38 @@ public:
             switch (nums[mid]) {
                 case 0:
                     swap(nums[low], nums[mid]);
+                    low++;class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int low = 0;  // pointer for 0 (red)
+        int mid = 0;  // pointer for 1 (white)
+        int high = nums.size() - 1;  // pointer for 2 (blue)
+        
+        while (mid <= high) {
+            switch (nums[mid]) {
+                case 0:
+                    swap(nums[low], nums[mid]);
                     low++;
+                    mid++;
+                    break;
+                case 1:
+                    mid++;
+                    break;
+                case 2:
+                    swap(nums[mid], nums[high]);
+                    high--;
+                    break;
+            }
+        }
+    }
+    
+private:
+    void swap(int& a, int& b) {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+};
                     mid++;
                     break;
                 case 1:
